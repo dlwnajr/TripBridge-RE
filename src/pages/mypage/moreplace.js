@@ -35,34 +35,28 @@ function MorePlace() {
   const [showNoPlacePopup, setshowNoPlacePopup] = useState(false); // 팝업 상태 추가
 
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=29f03c7b54622c8d9a8c60c20cd7e7e0&autoload=false`;
-    script.defer = true;
+    if (typeof window !== 'undefined') {
+      const script = document.createElement('script');
+      script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=29f03c7b54622c8d9a8c60c20cd7e7e0&autoload=false`;
+      script.defer = true;
   
-    script.onload = () => {
-      if (typeof window.kakao !== 'undefined' && window.kakao.maps) {
-        window.kakao.maps.load(() => {
-          initMap();  // 맵 초기화 함수 실행
-          setPlacesService(new window.kakao.maps.services.Places());
-        });
-      } else {
-        console.error('카카오맵 API가 로드되지 않았습니다.');
-      }
-    };
+      script.onload = () => {
+        if (typeof window.kakao !== 'undefined' && window.kakao.maps) {
+          window.kakao.maps.load(() => {
+            initMap();  // 맵 초기화 함수 실행
+            setPlacesService(new window.kakao.maps.services.Places());
+          });
+        }
+      };
   
-    script.onerror = () => {
-      console.error('카카오맵 스크립트 로드 실패');
-    };
+      document.head.appendChild(script);
   
-    document.head.appendChild(script);
-  
-    return () => {
-      document.head.removeChild(script);
-      if (map) {
-        placeMarkers.forEach(marker => marker.setMap(null));
-      }
-    };
+      return () => {
+        document.head.removeChild(script);
+      };
+    }
   }, []);
+  
   
   
 
