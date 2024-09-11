@@ -39,13 +39,18 @@ function MorePlace() {
     script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=29f03c7b54622c8d9a8c60c20cd7e7e0&libraries=services`;
     script.defer = true;  // async 대신 defer 사용
     script.onload = () => {
-      if (window.kakao && window.kakao.maps) {
-        initMap();
-        setPlacesService(new window.kakao.maps.services.Places());
-      } else {
-        console.error("카카오맵 API 로드 실패");
+      try {
+        if (window.kakao && window.kakao.maps) {
+          initMap();
+          setPlacesService(new window.kakao.maps.services.Places());
+        } else {
+          console.error("카카오맵 API 로드 실패");
+        }
+      } catch (error) {
+        console.error("KakaoMap 스크립트 로딩 중 오류 발생:", error);
       }
     };
+    
     document.head.appendChild(script);
 
     return () => {
