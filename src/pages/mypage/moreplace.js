@@ -37,22 +37,23 @@ function MorePlace() {
   useEffect(() => {
     const script = document.createElement('script');
     script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=29f03c7b54622c8d9a8c60c20cd7e7e0&libraries=services&autoload=false`;
-    script.defer = true;  // async 대신 defer 사용
+    script.defer = true;
+    
     script.onload = () => {
-      try {
-        if (window.kakao && window.kakao.maps) {
-          initMap();
-          setPlacesService(new window.kakao.maps.services.Places());
-        } else {
-          console.error("카카오맵 API 로드 실패");
-        }
-      } catch (error) {
-        console.error("KakaoMap 스크립트 로딩 중 오류 발생:", error);
+      if (typeof window.kakao !== 'undefined' && window.kakao.maps) {
+        initMap();  // 맵 초기화 함수 실행
+        setPlacesService(new window.kakao.maps.services.Places());
+      } else {
+        console.error('카카오맵 API가 로드되지 않았습니다.');
       }
     };
     
+    script.onerror = () => {
+      console.error('카카오맵 스크립트 로드 실패');
+    };
+    
     document.head.appendChild(script);
-
+  
     return () => {
       document.head.removeChild(script);
       if (map) {
@@ -60,6 +61,7 @@ function MorePlace() {
       }
     };
   }, []);
+  
 
   const initMap = () => {
     const container = document.getElementById('map');
