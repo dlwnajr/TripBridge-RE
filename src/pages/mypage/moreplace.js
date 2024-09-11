@@ -38,20 +38,22 @@ function MorePlace() {
     const script = document.createElement('script');
     script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=29f03c7b54622c8d9a8c60c20cd7e7e0&autoload=false`;
     script.defer = true;
-    
+  
     script.onload = () => {
       if (typeof window.kakao !== 'undefined' && window.kakao.maps) {
-        initMap();  // 맵 초기화 함수 실행
-        setPlacesService(new window.kakao.maps.services.Places());
+        window.kakao.maps.load(() => {
+          initMap();  // 맵 초기화 함수 실행
+          setPlacesService(new window.kakao.maps.services.Places());
+        });
       } else {
         console.error('카카오맵 API가 로드되지 않았습니다.');
       }
     };
-    
+  
     script.onerror = () => {
       console.error('카카오맵 스크립트 로드 실패');
     };
-    
+  
     document.head.appendChild(script);
   
     return () => {
@@ -61,6 +63,7 @@ function MorePlace() {
       }
     };
   }, []);
+  
   
 
   const initMap = () => {
