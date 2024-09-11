@@ -35,7 +35,7 @@ const Nav = ({ isLoggedIn, nickname, onLogout }) => {
       <div className="nav-container">
         <ul className="nav-list-1">
           <li className="nav-item"><Link className="styled-trip" to="/">Trip-Bridge</Link></li>
-          <li className="nav-item"><Link className="styled-link" to="/filter">여행지 추천</Link></li>
+          <li className="nav-item"><Link className="styled-link" to="/filter">여행지 추천2</Link></li>
           <li className="nav-item">
             <Link className="styled-link" to="/map" onClick={() => handleLinkClick('/map')}>동선 추천</Link>
           </li>
