@@ -36,15 +36,21 @@ function MorePlace() {
 
   useEffect(() => {
     
-    const script = document.createElement('script');
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=29f03c7b54622c8d9a8c60c20cd7e7e0&libraries=services`;
-    script.async = true;
-    document.head.appendChild(script);
+   // 카카오맵 스크립트 생성 및 로드
+   const script = document.createElement('script');
+   script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=29f03c7b54622c8d9a8c60c20cd7e7e0&libraries=services`; // https 명시
+   script.async = true;
+   document.head.appendChild(script);
 
-    script.onload = () => {
-      initMap();
-      setPlacesService(new window.kakao.maps.services.Places());
-    };
+   // 스크립트 로드 완료 후 initMap 호출
+   script.onload = () => {
+       if (window.kakao && window.kakao.maps) {
+           initMap();
+           setPlacesService(new window.kakao.maps.services.Places());
+       } else {
+           console.error("카카오 맵을 로드하는 데 문제가 발생했습니다.");
+       }
+   };
 
     return () => {
       document.head.removeChild(script);
@@ -535,4 +541,4 @@ const handleRecommendationClick = (place, index) => {
   );
 }
 
-export default MorePlace;
+export default MorePlace
