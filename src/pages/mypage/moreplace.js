@@ -36,7 +36,7 @@ function MorePlace() {
 
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=29f03c7b54622c8d9a8c60c20cd7e7e0&libraries=services`;
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=29f03c7b54622c8d9a8c60c20cd7e7e0&libraries=services&autoload=false`;
     script.defer = true;  // async 대신 defer 사용
     script.onload = () => {
       try {
