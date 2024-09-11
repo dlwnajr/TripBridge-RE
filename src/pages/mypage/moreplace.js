@@ -36,15 +36,21 @@ function MorePlace() {
 
   useEffect(() => {
     
-    const script = document.createElement('script');
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=29f03c7b54622c8d9a8c60c20cd7e7e0&libraries=services`;
-    script.async = true;
-    document.head.appendChild(script);
+   // 카카오맵 스크립트 생성 및 로드
+   const script = document.createElement('script');
+   script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=29f03c7b54622c8d9a8c60c20cd7e7e0&libraries=services`; // https 명시
+   script.async = true;
+   document.head.appendChild(script);
 
-    script.onload = () => {
-      initMap();
-      setPlacesService(new window.kakao.maps.services.Places());
-    };
+   // 스크립트 로드 완료 후 initMap 호출
+   script.onload = () => {
+       if (window.kakao && window.kakao.maps) {
+           initMap();
+           setPlacesService(new window.kakao.maps.services.Places());
+       } else {
+           console.error("카카오 맵을 로드하는 데 문제가 발생했습니다.");
+       }
+   };
 
     return () => {
       document.head.removeChild(script);
@@ -268,6 +274,7 @@ setClickedLocationOverlay(newClickedLocationOverlay);  // 새로운 overlay 저�
           setSearchResults([]); // 검색 결과 상태를 초기화
           setShowNoRecommendationsPopup(true); // "주변 추천 장소가 없습니다" 팝업 띄우기
           setShowMiniRecommendations(false); // 주변 관광지 추천 창 닫기
+          removeCurrentOverlay(); // 오버레이 제거
         }
       });
   
@@ -319,7 +326,18 @@ const handleDeleteLocation = async (location) => {
   }
 };
 
+// 추천 리스트를 닫거나 장소가 없을 때 CustomOverlay를 제거하는 함수
+const removeCurrentOverlay = () => {
+  if (window.currentOverlay) {
+    window.currentOverlay.setMap(null); // 현재 오버레이가 있으면 지도에서 제거
+    window.currentOverlay = null; // 오버레이 상태 초기화
+  }
+};
+
+// X 버튼 클릭 시 추천 리스트를 닫고 CustomOverlay도 제거
 const toggleRecommendations = (event) => {
+  removeCurrentOverlay(); // 오버레이 제거
+
   if (selectedLocations.length === 0) {
     setShowSelectPlacePopup(true); // 장소를 선택하라는 팝업 띄우기
   } else if (searchResults.length === 0) {
@@ -523,4 +541,4 @@ const handleRecommendationClick = (place, index) => {
   );
 }
 
-export default MorePlace;
+export default MorePlace
