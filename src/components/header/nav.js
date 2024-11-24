@@ -33,46 +33,52 @@ const Nav = ({ isLoggedIn, nickname, onLogout }) => {
   return (
     <nav className="navbar">
       <div className="nav-container">
-        <ul className="nav-list-1">
-          <li className="nav-item"><Link className="styled-trip" to="/">Trip-Bridge</Link></li>
-          <li className="nav-item"><Link className="styled-link" to="/filter">여행지 추천</Link></li>
-          <li className="nav-item">
-            <Link className="styled-link" to="/map" onClick={() => handleLinkClick('/map')}>동선 추천</Link>
-          </li>
-          <li className="nav-item" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <div className="styled-link" onMouseEnter={handleDropdownMouseEnter} onMouseLeave={handleDropdownMouseLeave}>
-              게시판
-            </div>
-            {showDropdown && (
-              <div className="dropdown-item" onMouseEnter={handleDropdownMouseEnter} onMouseLeave={handleDropdownMouseLeave}>
-                <Link to="/tripboard">여행 게시판</Link>
-                <Link to="/mateboard">메이트 게시판</Link>
+        <div className="logo">
+          <Link className="styled-trip" to="/">TRIP BRIDGE</Link>
+        </div>
+        <div className="nav-center"> {/* 중앙 메뉴 컨테이너 */}
+          <ul className="nav-list-1">
+            <li className="nav-item">
+              <Link className="styled-link" to="/filter">여행지 추천</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="styled-link" to="/map" onClick={() => handleLinkClick('/map')}>동선 추천</Link>
+            </li>
+            <li className="nav-item" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+              <div className="styled-link" onMouseEnter={handleDropdownMouseEnter} onMouseLeave={handleDropdownMouseLeave}>
+                게시판
               </div>
-            )}
-          </li>
-        </ul>
-        <ul className="nav-list-2">
+              {showDropdown && (
+                <div className="dropdown-item" onMouseEnter={handleDropdownMouseEnter} onMouseLeave={handleDropdownMouseLeave}>
+                  <Link to="/tripboard">여행 게시판</Link>
+                  <Link to="/mateboard">메이트 게시판</Link>
+                </div>
+              )}
+            </li>
+            <li className="nav-item">
+              <Link className="styled-link" to="/mypage" onClick={() => handleLinkClick('/mypage')}>나만의 동선</Link>
+            </li>
+          </ul>
+        </div>
+        <div className="nav-list-2"> {/* 오른쪽 인증 관련 아이템 */}
           {!isLoggedIn && (
-            <>
-              {/* "마이페이지" 클릭 시 로그인 상태가 아니면 모달 열기 */}
-              <li className="nav-item"><Link className="styled-link-mypage" to="#" onClick={() => handleLinkClick('/mypage')}>마이페이지</Link></li>
-              <li className="auth-item"><Link className="styled-link-login" to="/login">LOGIN</Link></li>
-              <li className="auth-item"><Link className="styled-link-signup" to="/signup">SIGN UP</Link></li>
-            </>
+            <li className="auth-item">
+              <Link className="styled-link-login" to="/login">로그인 / 회원가입</Link>
+            </li>
           )}
           {isLoggedIn && (
             <>
-              <li className="nav-item"><Link className="styled-link-mypage" to="/mypage">마이페이지</Link></li>
               <li className="nav-item">
                 <div className="styled-user">{nickname}님</div>
               </li>
-
-              <li className="nav-item"><Link className="styled-link-logout" onClick={onLogout} to="/">LOGOUT</Link></li>
+              <li className="nav-item">
+                <Link className="styled-link-logout" onClick={onLogout} to="/">LOGOUT</Link>
+              </li>
             </>
           )}
-        </ul>
+        </div>
       </div>
-
+  
       {showModal && (
         <div className="login-modal">
           <div className="login-modal-content">

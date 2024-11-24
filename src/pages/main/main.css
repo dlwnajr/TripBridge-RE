@@ -1,321 +1,224 @@
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&display=swap');
-
-/* font-family: 'Noto Sans KR', sans-serif; */
-
-@font-face {
-  font-family: 'JalnanGothic';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'TmonMonsori';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/TmonMonsori.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-
-@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-.banner-container {
-  position: relative;
-  width: 100vw;
-  height: 88vh; /* Full screen height */
-}
-
-.Img {
-  width: 100%;
-  height: 88vh; /* 뷰포트 높이만큼 이미지 높이를 설정 */
-  object-fit: cover; /* 이미지 비율을 유지하면서 전체를 덮도록 설정 *
-  position: relative; /* 오버레이를 이 이미지 위에 배치하기 위해 설정 */
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.3); /* 검정색 오버레이, 80% 불투명도 */
-  pointer-events: none; /* 오버레이가 클릭 이벤트를 차단하지 않도록 설정 */
-}
-
-.main-text {
-  font-family: 'Noto Sans KR', sans-serif; 
-  position: absolute;
-  padding: 10px;
-  bottom: 20px;
-  right: 60px;
-  color: rgba(255, 255, 255, 0.823);
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 1px;
-  z-index: 2; /* 이미지 위에 텍스트가 보이도록 설정 */
-}
-
-.banner-text {
-  position: absolute;
-  top: 51%;
-  transform: translateY(-50%);
-  left: 10%;
-  z-index: 3; /* 이미지 위에 텍스트가 보이도록 설정 */
-  color: white;
-  font-size: 55px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  font-family: 'TmonMonsori';
-  /* font-family: "Kanit", sans-serif; */
-  text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5); /* 그림자 효과 추가 */
-}
-
-.banner-text2 {
-  position: absolute;
-  top: 57%;
-  transform: translateY(-50%);
-  left: 10.5%;
-  z-index: 3; /* 이미지 위에 텍스트가 보이도록 설정 */
-  color: rgba(255, 255, 255, 0.941);
-  font-size: 23px;
-  font-weight: 500;
-  font-family: 'Noto Sans KR', sans-serif;
-  letter-spacing: 2px;
-}
-
-.left-icon, .right-icon {
-  position: absolute;
-  top: 53%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  z-index: 3;
-  color: white;
-}
-
-.left-icon {
-  left: 10px;
-}
-
-.right-icon {
-  right: 10px;
-}
-
-.func-container {
+.main {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end;
-  position: absolute;
-  top: 73%;
-  right: 8%;
-  transform: translateY(-50%);
-  z-index: 4;
-  font-family: 'Noto Sans KR', sans-serif;
-}
-
-.func1, .func2, .func3, .func4 {
-  padding: 23px;
-  font-size: 24px;
-  color: #ffffff;
-  border-radius: 8px;
-  font-family: 'JalnanGothic';
-  transition: transform 0.2s ease;
-  position: relative;
-  width: 360px;
-  cursor: pointer;
-}
-
-.moveto {
-  position: absolute;
-  bottom: 13px;
-  right: 0px;
-  font-size: 38px;
-  color: #ffffff;
-  transition: transform 0.2s ease;
-  text-decoration: none;
-}
-
-
-@keyframes moveArrow {
-  0% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(5px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-.func1:hover .moveto,
-.func2:hover .moveto,
-.func3:hover .moveto,
-.func4:hover .moveto {
-  animation: moveArrow 0.7s linear infinite;
-}
-
-
-.func1:hover,
-.func2:hover,
-.func3:hover,
-.func4:hover {
-  transform: translateX(10px);
-}
-
-/* .func-container {
-  display: flex;
-  justify-content: space-between;
-  width: 1500px;
-  position: absolute;
-  top: 67%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 4;
-  font-family: 'Noto Sans KR', sans-serif;
-  text-decoration: none;
-} */
-
-/* .func1, .func2, .func3, .func4 {
-  background-color: #ffffff;
-  width: 280px;
-  height: 160px;
-  padding: 25px;
-  font-size: 25px;
-  color: #191919;
-  border: 1px solid #d9d9d9;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  font-family: 'JalnanGothic';
-  transition: transform 0.2s ease;
-  position: relative;
-} */
-
-/* .moveto {
-  position: absolute;
-  bottom: 0px;
-  right: 20px;
-  font-size: 45px;
-  color: #191919;
-  transition: transform 0.2s ease;
-  text-decoration: none;
-} */
-
-/* @keyframes moveArrow {
-  0% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(5px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-} */
-
-/* .moveto svg {
-  transition: transform 0.2s ease;
-} */
-
-/* .func1:hover .moveto svg,
-.func2:hover .moveto svg,
-.func3:hover .moveto svg,
-.func4:hover .moveto svg {
-  animation: moveArrow 0.7s linear infinite;
-} */
-
-/* .func1:hover .moveto,
-.func2:hover .moveto,
-.func3:hover .moveto,
-.func4:hover .moveto {
-  color: #2395ff;
-} */
-
-/* .func1:hover,
-.func2:hover,
-.func3:hover,
-.func4:hover {
-  transform: translateY(-10px);
-  color: #0084ff;
-} */
-
-
-.detail {
-  margin-top: 10px;
-  font-size: 15px;
-  font-weight: 400;
-  color: #ffffff;
-  font-family: 'Noto Sans KR', sans-serif;
-  width: auto;
-}
-
-.footer {
-  background-color: #ffffff;
-  height: 60px;
-  bottom: 0;
-  width: 100%;
-  border-top: 1px solid #e1e1e1;
-  display: flex;
   align-items: center;
+  width: 100%; /* 전체 너비 차지 */
+  height: 100%;
 }
 
-.footer-text {
-  font-size: 12px;
-  font-family: 'Noto Sans KR', sans-serif;
+.main-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  width: 100%;
+  text-align: center;
+  color: #000;
+  background:
+    radial-gradient(circle at top left, rgba(255, 182, 193, 0.5), rgba(255, 182, 193, 0) 40%), 
+    radial-gradient(circle at bottom right, rgba(135, 206, 250, 0.5), rgba(135, 206, 250, 0) 40%);
+  background-size: 200% 200%;
+  animation: backgroundMove 3s infinite alternate; /* 배경 애니메이션만 유지 */
+}
+
+/* 배경 움직임 애니메이션 */
+@keyframes backgroundMove {
+  0% {
+    background-position: 20% 20%, 80% 80%; /* 초기 위치 */
+  }
+  25% {
+    background-position: 30% 30%, 80% 80%; /* 첫 번째 그라디언트의 위치, 두 번째 그라디언트의 위치 */
+  }
+  50% {
+    background-position: 50% 50%, 70% 70%; /* 중간 위치 */
+  }
+  75% {
+    background-position: 70% 70%, 60% 60%; /* 마지막으로 이동하는 위치 */
+  }
+  100% {
+    background-position: 80% 80%, 50% 50%; /* 최종 위치 */
+  }
+}
+
+/* 텍스트 페이드 인 효과 */
+@keyframes textFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px); /* 아래에서 올라오는 효과 */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* 원래 위치로 */
+  }
+}
+
+/* 텍스트 스케일 애니메이션 */
+@keyframes textScale {
+  0% {
+    transform: scale(2.5); /* 처음에는 2배 크기 */
+  }
+  100% {
+    transform: scale(1); /* 정상 크기로 줄어듦 */
+  }
+}
+
+
+/* 제목 스타일 */
+.main-title {
+  font-size: 100px;
+  letter-spacing: -2px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 800;
+  animation: textFadeIn 1s ease-in-out, textScale 1.5s ease-in-out forwards; /* 애니메이션 추가 */
+}
+
+/* 설명 스타일 */
+.main-description {
+  font-size: 20px;
+  margin-top: 20px;
+  max-width: 60%; /* 최대 너비 설정 */
+  line-height: 1.5; /* 줄 높이 설정 */
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 200;
+  opacity: 0; /* 초기 상태를 보이지 않게 설정 */
+  animation: textFadeIn 1.5s ease-in-out forwards; /* 설명에 애니메이션 적용 */
+  animation-delay: 1.5s; /* 제목 애니메이션 후에 시작 */
+}
+
+.features-wrapper {
+  display: flex;
+  align-items: flex-start; /* 제목과 카드가 나란히 정렬되도록 설정 */
+  width: 70%;
+  padding: 80px;
+}
+
+/* 제목 스타일 */
+.features-semititle {
+  font-size: 46px;
+  font-family: 'Pretendard', sans-serif;
   font-weight: 600;
-  color: #8d8d8d;
-  margin-left: 30px;
+  width: 40%; /* 제목이 차지할 공간 비율 설정 */
 }
 
-.login-modal {
-  position: fixed;
+.features-container {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* 카드 간의 간격 조정 */
+  width: 60%;
+  align-items: flex-end; /* 오른쪽 정렬 */
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #f9f9f9;
+  padding: 34px;
+  border-radius: 20px;
+  aspect-ratio: 4 / 1; /* 카드 비율 */
+  width: 90%; /* 너비를 90%로 설정 */
+  word-wrap: break-word; /* 긴 단어가 줄 바꿈 되도록 설정 */
+  justify-content: center; /* 카드의 내용이 세로 중앙에 오도록 설정 */
+  opacity: 0; /* 초기 상태: 보이지 않음 */
+  transform: translateY(20px); /* 아래에서 시작 */
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* 배너 스타일 인덱스 */
+.feature-card::before {
+  content: attr(data-index);
+  position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.login-modal-content {
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 500;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.login-modal-content button {
-  font-family: 'Noto Sans KR', sans-serif;
-  padding: 4px 25px;
-  margin: 5px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.login-modal-content button:nth-of-type(1) {
-  background-color: #2c2c2c; /* 로그인 버튼 배경색 */
+  background-color: #ff7f50;
   color: white;
+  padding: 14px 24px;
+  font-size: 30px;
+  font-weight: 800;
+  font-family: 'Pretendard', sans-serif;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
-.login-modal-content button:nth-of-type(2) {
-  background-color: #dbdbdb; /* 취소 버튼 배경색 */
-  color: #2c2c2c;
+.feature-card.visible {
+  opacity: 1; /* 보이게 설정 */
+  transform: translateY(0); /* 원래 위치로 */
 }
 
-.login-modal-content button:nth-of-type(1):hover {
-  background-color: #5e5e5e; /* hover 시 배경색 변경 */
-  color: #ffffff; /* hover 시 글자색 변경 */
+.feature-content {
+  display: flex; /* Flexbox 사용 */
+  flex-direction: column; /* 세로 방향으로 정렬 */
+  justify-content: center; /* 콘텐츠를 세로 중앙 정렬 */
+  align-items: flex-start; /* 왼쪽 정렬 */
+  margin: auto; /* 중앙 정렬을 위해 자동 마진 사용 */
+  width: 74%;
 }
+
+.feature-title {
+  font-size: 30px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  color: #333;
+  text-align: left; /* 텍스트 왼쪽 정렬 */
+}
+
+.feature-description {
+  font-size: 18px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  color: #555;
+  line-height: 1.5;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(30px); /* 시작 위치 */
+    opacity: 0; /* 초기 투명도 */
+  }
+  100% {
+    transform: translateY(0); /* 최종 위치 */
+    opacity: 1; /* 최종 투명도 */
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease forwards; /* 애니메이션 설정 */
+}
+
+
+.process-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  padding: 80px;
+}
+
+.process-semititle{
+  font-size: 70px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+
+/* 리본 스타일 인덱스 */
+/*
+.feature-card::before {
+  content: attr(data-index);
+  position: absolute;
+  top: -10px; 
+  left: -10px;
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  font-size: 20px; 
+  font-weight: 700;
+  font-family: 'Pretendard', sans-serif;
+  transform: rotate(-10deg);
+}
+*/

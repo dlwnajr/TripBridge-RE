@@ -1,97 +1,98 @@
-
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-
-/* .notosanskr * { 
- font-family: 'Noto Sans KR', sans-serif;
-} */
+.login-background {
+  background-color: #fcfcfc; /* 고정된 배경색 */
+  min-height: 100vh; /* 화면 전체를 채우도록 설정 */
+  display: flex;
+  align-items: center; /* 수직 중앙 정렬 */
+  justify-content: center; /* 수평 중앙 정렬 */
+}
 
 .login-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 80vh;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-  
-  .login-form {
-    width: 100%;
-    padding: 20px;
-    border: 1px solid #7b7b7b;
-    border-radius: 8px;
-  }
-  
-  .styled-input {
-    width: calc(100% - 16px);
-    margin-bottom: 20px;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid rgb(152, 152, 152); /* 기본 테두리 색상은 검은색으로 설정 */
-    margin-top: 5px;
-  }
-  
-  .styled-input.error {
-    border-color: red; /* 오류가 발생하면 테두리 색상을 빨간색으로 변경 */
-    margin-bottom: 5px;
+  background-color: #ffffff; /* 흰색 배경 */
+  padding: 70px; /* 안쪽 여백 */
+  border-radius: 20px; /* 모서리 둥글게 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 */
+  width: 30%; /* 원하는 너비 */
+  position: absolute; /* 절대 위치 설정 */
+  top: 50%; /* 화면의 50% 위치 */
+  left: 50%; /* 화면의 50% 위치 */
+  transform: translate(-50%, -50%); /* 정확한 중앙으로 조정 */
 }
-  
-  .styled-label {
-    margin-bottom: 20px;
-    font-family: 'Noto Sans KR', sans-serif;
-  }
-  
-  .styled-error {
-    color: red;
-    font-size: 13px;
-  }
-  
-  .login-styled-button-container {
-    width: 100%;
-    text-align: center;
-    margin-top:30px;
-  }
-  
-  .login-styled-button {
-    padding: 8px 10px;
-    width: 150px; /*버튼 가로 크기 조절*/
-    background-color: #2c2c2c;
-    color: rgb(255, 255, 255);
-    border: none;
-    /* border-radius: 10px; */
-    cursor: pointer;
-    font-family: 'Noto Sans KR', sans-serif;
-    margin-top: 30px;
-    border-radius: 5px;
-  }
 
-  .login-styled-button:hover {
-    background-color:rgb(56, 55, 55);
-    
-  }
-  
-  .title {
-    font-size: 45px;
-    font-family: "Ubuntu", sans-serif;
-  font-weight: 700;
-  color: #2c2c2c;
-  font-style: normal;
-    /* font-weight: 900; */
-    letter-spacing: 3px; 
-    margin-bottom: 15px;
-    margin-top:50px;
-  }
-  
-  .hr-login {
-    transform: rotate(0deg);
-  width: 88px; /* 가로 길이를 조절합니다. */
-  height: 4px; /* 세로 길이를 조절합니다. */
-  border: none; /* 기본 테두리를 제거합니다. */
-   /* 가로 선의 두께와 색상을 설정합니다. */
-  margin-left: auto; /* 좌측 여백을 설정합니다. */
- margin-top: 0px;
- margin-bottom: 40px;
- background-color: rgba(163, 163, 163, 0.6);
- align-self: center;
-  }
+
+.login-title {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 36px; /* 제목 크기 */
+  font-weight: 700; /* 제목 두께 * /* 제목 두께 */
+  margin-bottom: 5px; /* 제목과 아래 요소 간격 */
+  text-align: left; /* 제목 중앙 정렬 */
+}
+
+.login-message {
+  font-family: 'Pretendard-Light', sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  text-align: left; /* 메시지 중앙 정렬 */
+  margin-bottom: 40px; /* 메시지와 다음 요소 간격 */
+}
+
+
+.login-input {
+  font-family: 'Pretendard-Light', sans-serif;
+  font-size: 16px;
+  width: 100%; /* 인풋 박스 너비를 80%로 설정 */
+  padding: 16px; /* 인풋 박스 안쪽 여백 */
+  background-color: #efefef;
+  border-color: transparent;
+  border-radius: 6px; /* 모서리 둥글게 */
+  margin-bottom: 12px; /* 인풋 박스 간격 */
+  box-sizing: border-box; /* 패딩과 테두리를 포함한 너비 설정 */
+  display: block; /* 블록 요소로 설정하여 여백을 올바르게 적용 */
+  margin-left: auto; /* 좌측 여백 자동으로 설정 */
+  margin-right: auto; /* 우측 여백 자동으로 설정 */
+  text-align: left; /* 인풋 내용 좌측 정렬 */
+}
+
+.styled-error {
+  font-family: 'Pretendard-Light', sans-serif;
+  color: #e11700; /* 에러 메시지 색상 */
+  font-size: 14px; /* 에러 메시지 크기 */
+}
+
+.login-button-container {
+  text-align: center; /* 버튼 중앙 정렬 */
+  margin-bottom: 40px; /* 버튼과 다음 요소 간격 */
+  margin-top: 16px;
+}
+
+.login-button {
+  font-family: 'Pretendard-Regular', sans-serif;
+  background-color: #000000; /* 버튼 배경색 */
+  color: white; /* 버튼 글자색 */
+  border: none; /* 버튼 테두리 없앰 */
+  padding: 16px;
+  width: 100%;
+  border-radius: 6px; /* 버튼 모서리 둥글게 */
+  cursor: pointer; /* 커서 변경 */
+  font-size: 16px; /* 버튼 글자 크기 */
+}
+
+.signup-prompt {
+  text-align: center; /* 메시지 중앙 정렬 */
+}
+
+.signup-go {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 16px; /* 메시지 크기 */
+  text-align: left; /* 메시지 중앙 정렬 */
+}
+
+.signup-link {
+  font-family: 'Pretendard', sans-serif;
+  color: #3498db; /* 링크 색상 */
+  text-decoration: none; /* 링크 밑줄 제거 */
+}
+
+.signup-link:hover {
+  text-decoration: underline; /* 호버 시 밑줄 */
+}

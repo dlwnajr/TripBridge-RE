@@ -1,188 +1,107 @@
-import React, { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useRef } from 'react';
 import './main.css';
-import { GrFormNext, GrFormPrevious } from "react-icons/gr";
-import { TbCircleArrowRight } from "react-icons/tb";
-
-const Container = styled.div`
-  width: ${(props) => props.totalSlides * 100}vw;
-  height: 88vh; /* Make the container full height */
-  transition: transform 0.5s ease-in-out;
-  transform: translateX(-${(props) => (props.currentSlide - 1) * 100}vw);
-  overflow: hidden;
-  display: flex;
-`;
 
 const Main = () => {
-  const [currentSlide, setCurrentSlide] = useState(1);
-  const [showPopup, setShowPopup] = useState(false);
-  const [activeFunc, setActiveFunc] = useState(null);
-  const slideInterval = useRef(null);
-  const isTransitioning = useRef(false);
-  const navigate = useNavigate();
 
-  const getToken = () => {
-    return sessionStorage.getItem('accessToken');
-  };
+  const features = [
+    {
+      title: "취향 저격! 나만의 완벽한 여행지 추천",
+      content: "나에게 딱 맞는 여행지가 궁금하다면? \n 원하는 조건으로 추려진 곳들을 만나보세요.",
+    },
+    {
+      title: "최적의 동선을 그리다. 편리한 여행 완성!",
+      content: "여행 계획에 스트레스는 더이상 그만!\n카카오맵과 함께하는 스마트하게 동선 추천을 받아보세요.",
+    },
+    {
+      title: "ChatGPT에게 물어봐",
+      content: "저장한 장소와 여행 동선에 궁금한 점이 있으신가요? \n ChatGPT에게 물어보세요. 즉시 도움을 드립니다.",
+    },    
+    {
+      title: "나만의 여정, 내 스타일로 기록하기",
+      content: "추천받은 동선을 저장하고, 제목, 평점, 메모까지 남겨보세요.\n효율적인 여행 관리가 가능합니다!",
+    },
+    {
+      title: "함께 나누는 여행 이야기!",
+      content: "즐거움을 나누면 2배! \n자유롭게 소통하며 여행의 재미를 더해줄 커뮤니티 공간입니다.",
+    },
+  ];
 
-  const startSlideShow = () => {
-    slideInterval.current = setInterval(() => {
-      setCurrentSlide((prev) => (prev === 7 ? 1 : prev + 1));
-    }, 3000);
-  };
-
-  const handleClickPrev = () => {
-    if (isTransitioning.current) return;
-    isTransitioning.current = true;
-    clearInterval(slideInterval.current);
-    setCurrentSlide((prev) => (prev === 1 ? 7 : prev - 1));
-    setTimeout(() => {
-      isTransitioning.current = false;
-      startSlideShow();
-    }, 500);
-  };
-
-  const handleClickNext = () => {
-    if (isTransitioning.current) return;
-    isTransitioning.current = true;
-    clearInterval(slideInterval.current);
-    setCurrentSlide((prev) => (prev === 7 ? 1 : prev + 1));
-    setTimeout(() => {
-      isTransitioning.current = false;
-      startSlideShow();
-    }, 500);
-  };
-
-  const handleLinkClick = (path) => {
-    const token = getToken();
-    if (!token) {
-      setShowPopup(true);
-    } else {
-      navigate(path);
-    }
-  };
-
-  const handleFuncClick = (funcNumber) => {
-    setActiveFunc(activeFunc === funcNumber ? null : funcNumber);
-  };
+  const featureRefs = useRef([]);
 
   useEffect(() => {
-    startSlideShow();
-    return () => clearInterval(slideInterval.current);
+    const options = {
+      root: null, // viewport
+      rootMargin: '0px',
+      threshold: 0.5, // 50%가 보이면 trigger
+    };
+  
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible'); // visible 클래스 추가
+        } else {
+          entry.target.classList.remove('visible'); // visible 클래스 제거
+        }
+      });
+    }, options);
+  
+    featureRefs.current.forEach(card => {
+      if (card) { // card가 유효할 때만 observe
+        observer.observe(card);
+      }
+    });
+  
+    return () => {
+      featureRefs.current.forEach(card => {
+        if (card && document.body.contains(card)) { // DOM에 남아있다면 unobserve
+          observer.unobserve(card);
+        }
+      });
+    };
   }, []);
-
+  
+  
   return (
     <div className="main">
-      <div className="banner-text">TRIP BRIDGE</div>
-      <div className="banner-text2">나만의 여행을 즐길 수 있는 곳, 트립 브릿지</div>
-      <div style={{ overflow: 'hidden' }}>
-        <Container currentSlide={currentSlide} totalSlides={7}>
-          <div className="inner">
-            <div className="banner-container">
-              <img src="./main/seoul.jpg" alt="배너1" className="Img" />
-              <div className="overlay"></div>
-              <div className="main-text">서울| 광화문</div>
-            </div>
-          </div>
-          <div className="inner">
-            <div className="banner-container">
-              <img src="./main/suwon.jpg" alt="배너2" className="Img" />
-              <div className="overlay"></div>
-              <div className="main-text">경기| 수원화성</div>
-            </div>
-          </div>
-          <div className="inner">
-            <div className="banner-container">
-              <img src="./main/gangwon.jpg" alt="배너3" className="Img" />
-              <div className="overlay"></div>
-              <div className="main-text">강원| 설악산</div>
-            </div>
-          </div>
-          <div className="inner">
-            <div className="banner-container">
-              <img src="./main/jj.jpg" alt="배너4" className="Img" />
-              <div className="overlay"></div>
-              <div className="main-text">전주| 한옥마을</div>
-            </div>
-          </div>
-          <div className="inner">
-            <div className="banner-container">
-              <img src="./main/busan.jpg" alt="배너5" className="Img" />
-              <div className="overlay"></div>
-              <div className="main-text">부산| 광안대교</div>
-            </div>
-          </div>
-          <div className="inner">
-            <div className="banner-container">
-              <img src="./main/gj.jpg" alt="배너6" className="Img" />
-              <div className="overlay"></div>
-              <div className="main-text">경주| 안압지</div>
-            </div>
-          </div>
-          <div className="inner">
-            <div className="banner-container">
-              <img src="./main/jeju.jpg" alt="배너7" className="Img" />
-              <div className="overlay"></div>
-              <div className="main-text">제주| 제주시 해변</div>
-            </div>
-          </div>
-        </Container>
-        <GrFormPrevious size={45} className="left-icon" onClick={handleClickPrev} />
-        <GrFormNext size={45} className="right-icon" onClick={handleClickNext} />
+      {/* 배너 */}
+      <div className="main-banner">
+        <div className="main-title">TRIP BRIDGE</div>
+        <div className="main-description">
+          여행의 시작과 끝, Trip Bridge에서 나만의 여행을 만들어보세요! <br />
+          여행 커뮤니티와 다양한 여행지 추천 그리고 나만의 동선 관리까지, 여러분의 잊지 못할 여정을 Trip Bridge가 함께 합니다.
+        </div>
       </div>
 
-      <div className="func-container">
-        <div className="func func1" onClick={() => handleFuncClick(1)}>
-          여행지 추천
-          {activeFunc === 1 && (
-            <div className="detail">나만의 완벽한 여행지!<br />원하는 조건에 맞는 여행지를 쉽게 찾을 수 있습니다.</div>
-          )}
-          <Link to="/filter" className="moveto">
-            <TbCircleArrowRight />
-          </Link>
-        </div>
-        <div className="func func2" onClick={() => handleFuncClick(2)}>
-          동선 추천
-          {activeFunc === 2 && (
-            <div className="detail">여행의 시작은 계획에서부터!<br /> 편리한 동선 설계로 여행 준비를 도와드립니다.</div>
-          )}
-          <div className="moveto" onClick={() => handleLinkClick('/map')}>
-            <TbCircleArrowRight />
+      {/* 기능 소개 섹션 */}
+          {/* 기능 소개 제목 및 카드 */}
+          <div className="features-wrapper">
+      <div className="features-semititle">✨Welcome!<br/><br/>주요 기능에 대해<br/>소개 합니다.</div>
+      <div className="features-container">
+        {features.map((feature, index) => (
+          <div
+            className="feature-card"
+            key={index}
+            data-index={index + 1 < 10 ? `0${index + 1}` : index + 1}
+            ref={el => featureRefs.current[index] = el} // 각 카드의 ref 설정
+          >
+            <div className="feature-content">
+              <div className="feature-title">{feature.title}</div>
+              <div className="feature-description">
+                {feature.content.split('\n').map((line, index) => (
+                  <span key={index}>{line}</span>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="func func3" onClick={() => handleFuncClick(3)}>
-          여행 게시판
-          {activeFunc === 3 && (
-            <div className="detail">모두 함께 만드는 여행 커뮤니티!<br /> 여행 정보를 나누고 서로에게 영감을 주는 공간입니다.</div>
-          )}
-          <Link to="/tripboard" className="moveto">
-            <TbCircleArrowRight />
-          </Link>
-        </div>
-        <div className="func func4" onClick={() => handleFuncClick(4)}>
-          여행 메이트 게시판
-          {activeFunc === 4 && (
-            <div className="detail">혼자보다 함께가 더 즐거운 여행!<br /> 마음 맞는 여행 메이트를 여기서 찾을 수 있습니다.</div>
-          )}
-          <Link to="/mateboard" className="moveto">
-            <TbCircleArrowRight />
-          </Link>
-        </div>
+        ))}
       </div>
-      <div className="footer">
-        <div className="footer-text">ⓒ TripBridge. All Rights Reserved.</div>
-      </div>
+    </div>
 
-      {showPopup && (
-        <div className="login-modal">
-          <div className="login-modal-content">
-            <p>동선 추천은 로그인 후 이용이 가능합니다. <br/> 로그인하시겠습니까?</p>
-            <button onClick={() => { setShowPopup(false); navigate('/login'); }}>로그인</button>
-            <button onClick={() => setShowPopup(false)}>취소</button>
-          </div>
-        </div>
-      )}
+    <div className='process-container'>
+      <div className='process-semititle'>
+        어떻게 활용하나요?
+      </div>
+    </div>
     </div>
   );
 };

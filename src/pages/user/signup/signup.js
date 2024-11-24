@@ -69,7 +69,7 @@ const SignUp = () => {
       if (!checked) {
         setErrors(prevErrors => ({
           ...prevErrors,
-          confirmCheckbox: '약관에 동의해야 합니다.'
+          confirmCheckbox: '약관 동의는 필수입니다.'
         }));
       }
     }
@@ -104,14 +104,15 @@ const SignUp = () => {
   };
 
   return (
-    <div className="sign-up-page">
-      <div className="sign-up-container">
-        <h1 className="title">SIGN UP</h1>
-        <hr className="hr-signup"/>
-        <form className="sign-up-form" onSubmit={handleSubmit}>
-          <label className="styled-label">이름</label>
+    <div className="signup-background">
+      <div className="signup-container">
+        <div className="signup-title">회원가입</div>
+        <div className='signup-message'>회원가입 후 Trip Bridge의 서비스를 이용해보세요.</div>
+        <form onSubmit={handleSubmit}>
+          <div className="signup-label">이름</div>
           <input
-            className={`styled-input ${errors.name && 'error'}`}
+            className={`signup-input ${errors.name && 'error'}`}
+            placeholder='성함을 입력해주세요.'
             type="text"
             name="name"
             value={formData.name}
@@ -119,9 +120,10 @@ const SignUp = () => {
             required
           />
           {errors.name && <span className="styled-error">{errors.name}</span>}
-          <label className="styled-label">닉네임</label>
+          <div className="signup-label">닉네임</div>
           <input
-            className={`styled-input ${errors.nickname && 'error'}`}
+            className={`signup-input ${errors.nickname && 'error'}`}
+            placeholder='닉네임을 입력해주세요.'
             type="text"
             name="nickname"
             value={formData.nickname}
@@ -129,9 +131,10 @@ const SignUp = () => {
             required
           />
           {errors.nickname && <span className="styled-error">{errors.nickname}</span>}
-          <label className="styled-label">이메일 주소</label>
+          <div className="signup-label">이메일 주소</div>
           <input
-            className={`styled-input ${errors.email && 'error'}`}
+            className={`signup-input ${errors.email && 'error'}`}
+            placeholder='이메일 주소를 입력해주세요.'
             type="email"
             name="email"
             value={formData.email}
@@ -139,9 +142,10 @@ const SignUp = () => {
             required
           />
           {errors.email && <span className="styled-error-email">{errors.email}</span>}
-          <label className="styled-label">비밀번호</label>
+          <div className="signup-label">비밀번호</div>
           <input
-            className={`styled-input ${errors.password && 'error'}`}
+            className={`signup-input ${errors.password && 'error'}`}
+            placeholder='비밀번호를 입력해주세요.'
             type="password"
             name="password"
             value={formData.password}
@@ -149,9 +153,10 @@ const SignUp = () => {
             required
           />
           {errors.password && <span className="styled-error">{errors.password}</span>}
-          <label className="styled-label">비밀번호 확인</label>
+          <div className="signup-label">비밀번호 확인</div>
           <input
-            className={`styled-input ${errors.confirmPassword && 'error'}`}
+            className={`signup-input ${errors.confirmPassword && 'error'}`}
+            placeholder='비밀번호를 다시 입력해주세요'
             type="password"
             name="confirmPassword"
             value={formData.confirmPassword}
@@ -159,45 +164,39 @@ const SignUp = () => {
             required
           />
           {errors.confirmPassword && <span className="styled-error">{errors.confirmPassword}</span>}
-          <br />
-          <br />
           {/* 약관동의 추가 */}
-          <label className="agreement-label">약관 동의</label>
-          <div class="contents">
-            <ul class="terms__list">
-              <li class="terms__box">
-                <div class="input__check">
-                  <input type="checkbox" class="required" />
-                  <label for="termsOfService">Trip Bridge 이용약관 동의</label>
-                </div>
-                <div class="terms__content">
-                  여러분을 환영합니다. Trip Bridge 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은
-                  다양한 JUN 서비스의 이용과 관련하여 Trip Bridge 서비스를 제공하는 Trip Bridge 주식회사(이하 ‘Trip
-                  Bridge’)와 이를 이용하는 Trip Bridge 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며,
-                  아울러 여러분의 Trip Bridge 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
-                  Trip Bridge 서비스를 이용하시거나 Trip Bridge 서비스 회원으로 가입하실 경우 여러분은 본 약관 및 관련
-                  운영 정책을 확인하거나 동의하게 되므로, 잠시 시간을 내시어 주의 깊게 살펴봐 주시기 바랍니다.
-                </div>
+        <div className="agreement-divider"></div>
+          <div className="agreement-label">약관 동의</div>
+            <ul className="terms_list">
+              <li className="terms_box">
+                <input type="checkbox" className="required" id="termsOfService" />
+                <label htmlFor="termsOfService">
+                  Trip Bridge 이용약관 동의
+                  <div className="tooltip">
+                    <button className="info-button">?</button>
+                     <div className="tooltip-text">
+                      여러분을 환영합니다.<br/>Trip Bridge 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다.<br/>본 약관은 다양한 JUN 서비스의 이용과 관련하여 Trip Bridge 서비스를 제공하는 Trip Bridge 주식회사(이하 ‘Trip Bridge’)와 이를 이용하는 Trip Bridge 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 Trip Bridge 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
+                    </div>
+                  </div>
+                </label>
               </li>
-              <li class="terms__box">
-                <div class="input__check">
-                  <input type="checkbox" class="required" />
-                  <label for="termsOfService">개인정보 수집 및 이용 동의</label>
-                </div>
-                <div class="terms__content">
-                  개인정보보호법에 따라 Trip Bridge에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의
-                  수집 및 이용목적, 개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부 시 불이익에 관한 사항을 안내
-                  드리오니 자세히 읽은 후 동의하여 주시기 바랍니다. 1. 수집하는 개인정보 이용자는 회원가입을 하지 않아도
-                  정보 검색, 뉴스 보기 등 대부분의 네이버 서비스를 회원과 동일하게 이용할 수 있습니다. 2. 이용자가
-                  메일, 캘린더, 카페, 블로그 등과 같이 개인화 혹은 회원제 서비스를 이용하기 위해 회원가입을 할 경우,
-                  네이버는 서비스 이용을 위해 필요한 최소한의 개인정보를 수집합니다.
-                </div>
+              <li className="terms__box">
+                <input type="checkbox" className="required" id="personalInfo" />
+                <label htmlFor="personalInfo">
+                  개인정보 수집 및 이용 동의
+                  <div className="tooltip">
+                    <button className="info-button">?</button>
+                    <div className="tooltip-text">
+                        개인정보 보호법에 따라, Trip Bridge에 회원가입을 신청하시는 분들께 수집하는 개인정보의 항목, 이용 목적, 보유 기간, 동의 거부권 및 동의 거부 시 불이익에 대한 사항을 안내드립니다. 자세히 읽으신 후 동의해 주시기 바랍니다.
+                    </div>
+                  </div>
+                </label>
               </li>
             </ul>
-          </div>
+
           {/* Checkbox error message */}
           {errors.confirmCheckbox && <span className="styled-error-agree">{errors.confirmCheckbox}</span>}
-          <div className="styled-button-container">
+          <div className="signup-button-container">
             <button className="signup-styled-button" type="submit">
               회원가입
             </button>

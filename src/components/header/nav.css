@@ -1,166 +1,139 @@
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
-/* .notosanskr * { 
- font-family: 'Noto Sans KR', sans-serif;
-} */
-
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-/* font-family: "Lobster", sans-serif;
-font-weight: 400;
-font-style: normal; */
 
 .navbar {
-  background-color: white;
-  border-bottom-style: solid;
-  border-bottom-color: rgb(198, 198, 198);
-  border-bottom-width: 1px;
-  padding: 10px;
-}
-
-.nav-list-1 {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  margin-left: 5rem;
-}
-
-.nav-list-2 {
-  list-style-type: none;
-  padding: 0;
-  margin-right: 2rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.nav-item {
-  margin-right: 13px;
-  position: relative;
-}
-
-.auth-item {
-  color: white;
-  margin-left: 20px;
-}
-
-.user-item {
-  margin-right: 13px;
-  position: relative;
+  padding: 20px 140px; /* 내비게이션 바 패딩 */
+  display: flex; /* Flexbox를 사용하여 레이아웃 */
+  align-items: center; /* 아이템 수직 정렬 */
+  position: relative; /* 위치 설정 */
+  z-index: 10; /* 내비게이션 바의 z-index 설정 */
 }
 
 .nav-container {
-  display: flex;
-  justify-content: space-between;
+  display: flex; /* 컨테이너에 Flexbox 사용 */
+  width: 100%; /* 전체 너비 */
+  justify-content: space-between; /* 왼쪽과 오른쪽 사이에 공간 */
 }
 
-.styled-link {
-  color: black;
-  text-decoration: none;
-  margin-left: 10px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  font-family: 'Noto Sans KR', sans-serif;
-  cursor: pointer;
+.logo {
+  flex: 0 0 auto; /* 로고는 고정 크기 유지 */
+  font-size: 30px; /* 로고의 폰트 크기 조정 */
+  font-family: 'Pretendard-Regular', sans-serif;
+  font-weight: 900;
 }
 
-.styled-trip {
-  color: black;
-  text-decoration: none;
-  margin-left: 10px;
-  font-size: 2.5rem;
-  font-family: "Lobster", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  margin-right: 40px;
+.nav-center {
+  position: absolute; /* 중앙 위치 고정 */
+  left: 50%; /* 중앙 정렬 */
+  top: 50%; /* 수직 중앙 정렬 */
+  transform: translate(-50%, -50%); /* 중앙 정렬을 위한 변환 */
+  font-family: 'Pretendard-Regular', sans-serif;
+  font-size: 18px;
 }
 
-.styled-user {
-  color: black;
-  text-decoration: none;
-  margin-left: 10px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  font-family: 'Noto Sans KR', sans-serif;
-  cursor: pointer;
+.nav-list-1 {
+  display: flex; /* 내비게이션 아이템을 행으로 나열 */
+  list-style: none; /* 기본 리스트 스타일 제거 */
+  padding: 0;
 }
 
-.styled-link:hover {
-  color: grey;
+.nav-item {
+  margin: 0 40px; /* 내비게이션 아이템 간격 */
+}
+
+.nav-list-2 {
+  display: flex; /* 인증 아이템을 행으로 나열 */
+  align-items: center; /* 수직 정렬 */
+  list-style: none; /* 기본 리스트 스타일 제거 */
+  font-family: 'Pretendard-SemiBold', sans-serif;
+  font-size: 16px;
+}
+
+.auth-item {
+  margin-left: auto; /* 로그인 아이템을 오른쪽으로 밀기 */
+}
+
+.styled-trip{
+  text-decoration: none; /* 링크에서 밑줄 제거 */
+  color: #000; /* 링크 색상 */
+}
+
+.styled-link,
+.styled-link-login,
+.styled-link-logout {
+  text-decoration: none; /* 링크에서 밑줄 제거 */
+  color: #000; /* 링크 색상 */
 }
 
 .dropdown-item {
-  font-family: 'Noto Sans KR', sans-serif;
   display: block;
   position: absolute;
   background-color: #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   min-width: 200px;
   padding: 10px;
-  border-radius: 20px;
-  z-index: 1000;
+  border-radius: 14px;
+  z-index: 1;
 }
 
 .dropdown-item a {
-  color: #2c2c2c;
+  color: #000;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  font-weight: bold;
+  font-family: 'Pretendard-Regular', sans-serif;
+  font-size: 16px;
 }
 
 .dropdown-item a:hover {
   background-color: rgb(230, 230, 230);
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
-.styled-link-login {
-  color: black;
-  text-decoration: none;
-  margin-left: 10px;
-  font-size: 0.9rem;
-  font-weight: bold;
+.login-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.login-modal-content {
   font-family: 'Noto Sans KR', sans-serif;
-  cursor: pointer;
-}
-
-.styled-link-signup {
-  color: black;
-  text-decoration: none;
-  margin-left: 10px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  font-family: 'Noto Sans KR', sans-serif;
-  cursor: pointer;
-}
-
-.styled-link-logout {
-  color: black;
-  text-decoration: none;
-  margin-left: 10px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  font-family: 'Noto Sans KR', sans-serif;
-  cursor: pointer;
-}
-
-/* 마이페이지 링크 스타일 추가 */
-.styled-link-mypage {
-  color: rgb(0, 0, 0);
-  text-decoration: none;
-  background-color: rgba(178, 178, 178, 0.968);
-  padding: 4px 12px;
-  margin-right: 10px;
-  font-size: 0.9rem;
-  border-radius: 8px;
   font-weight: 500;
-  font-family: 'Noto Sans KR', sans-serif;
-  cursor: pointer;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.styled-link-mypage:hover {
-  color: rgb(54, 54, 54);
+.login-modal-content button {
+  font-family: 'Noto Sans KR', sans-serif;
+  padding: 4px 25px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.login-modal-content button:nth-of-type(1) {
+  background-color: #2c2c2c; /* 로그인 버튼 배경색 */
+  color: white;
+}
+
+.login-modal-content button:nth-of-type(2) {
+  background-color: #dbdbdb; /* 취소 버튼 배경색 */
+  color: #2c2c2c;
+}
+
+.login-modal-content button:nth-of-type(1):hover {
+  background-color: #5e5e5e; /* hover 시 배경색 변경 */
+  color: #ffffff; /* hover 시 글자색 변경 */
 }

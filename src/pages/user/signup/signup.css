@@ -1,217 +1,178 @@
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-
-
-/* .notosanskr * { 
- font-family: 'Noto Sans KR', sans-serif;
-} */
-.sign-up-page {
-  display: flex;
-  justify-content: center; /* 수평 가운데 정렬 */
-  align-items: center; /* 수직 가운데 정렬 */
-  height: 100vh; /* 화면 전체 높이에 대해 센터 정렬 */
-}
-
-.sign-up-container {
+.signup-background {
+    background-color: #fcfcfc; /* 고정된 배경색 */
+    min-height: 100vh; /* 화면 전체를 채우도록 설정 */
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* text-align: center; */
-    justify-content: center;
-    max-width: 500px;
-    margin-top: 50px; /* 수직 가운데 정렬 */
-    margin-right: auto;
-    margin-bottom: auto; /* 수직 가운데 정렬 */
-    margin-left: auto;
-    padding-bottom: 50px;
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    padding: 80px 0 80px 0; /* 위 20px, 오른쪽 0, 아래 40px, 왼쪽 0 */
+    overflow-y: auto; /* 전체 화면에서 세로 스크롤 추가 */
   }
   
-  .sign-up-form {
-    width: 100%;
-    padding: 20px;
-    border: 1px solid #7b7b7b;
-    border-radius: 8px;
-    margin-bottom: 30px;
-    
+  .signup-container {
+    background-color: #ffffff; /* 흰색 배경 */
+    padding: 70px; /* 안쪽 여백 */
+    border-radius: 20px; /* 모서리 둥글게 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 */
+    width: 30%; /* 원하는 너비 */
   }
   
-  .styled-input {
-    width: calc(100% - 16px);
-    margin-bottom: 20px;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid rgb(152, 152, 152); /* 기본 테두리 색상은 검은색으로 설정 */
-    margin-top: 5px;
+  .signup-title {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 36px; /* 제목 크기 */
+    font-weight: 700; /* 제목 두께 * /* 제목 두께 */
+    margin-bottom: 5px; /* 제목과 아래 요소 간격 */
+    text-align: left; /* 제목 중앙 정렬 */
+  }
+
+  .signup-message {
+    font-family: 'Pretendard-Light', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    text-align: left; /* 메시지 중앙 정렬 */
+    margin-bottom: 60px; /* 메시지와 다음 요소 간격 */
   }
   
-  .styled-label {
-    margin-bottom: 5px;
-    font-family: 'Noto Sans KR', sans-serif;
+  .signup-label {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 400;
+    font-size: 16px; /* 레이블 크기 */
+    margin-bottom: 10px; /* 레이블과 인풋 간격 */
+    text-align: left; /* 레이블 좌측 정렬 */
+  }
+  
+  .signup-input {
+    font-family: 'Pretendard-Light', sans-serif;
+    font-size: 16px;
+    width: 100%; /* 인풋 박스 너비를 80%로 설정 */
+    padding: 14px; /* 인풋 박스 안쪽 여백 */
+    background-color: #efefef;
+    border-color: transparent;
+    border-radius: 6px; /* 모서리 둥글게 */
+    margin-bottom: 24px; /* 인풋 박스 간격 */
+    box-sizing: border-box; /* 패딩과 테두리를 포함한 너비 설정 */
+    display: block; /* 블록 요소로 설정하여 여백을 올바르게 적용 */
+    margin-left: auto; /* 좌측 여백 자동으로 설정 */
+    margin-right: auto; /* 우측 여백 자동으로 설정 */
+    text-align: left; /* 인풋 내용 좌측 정렬 */
   }
   
   .styled-error {
-    color: red;
-    margin-bottom: 5px;
-    display: block;
+    font-family: 'Pretendard-Light', sans-serif;
+    color: #e11700; /* 에러 메시지 색상 */
+    font-size: 14px; /* 에러 메시지 크기 */
   }
 
-  .styled-error-agree {
-    color: red;
-    margin-bottom: 5px;
-    margin-top:5px;
-    font-size: 14px;
-    display: block;
-  }
-
-  .styled-error-email {
-    color: red;
-    margin-bottom: 5px;
-    font-size: 14px;
-    display: block;
+  .agreement-divider {
+    height: 1px; /* 구분선 높이 */
+    background-color: #e0e0e0; /* 구분선 색상 */
+    margin: 20px 0; /* 위아래 여백 */
   }
   
-  .styled-button-container {
-    width: 100%;
-    text-align: center;
-    
+  .agreement-label {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 18px; /* 약관 레이블 크기 */
+    margin-bottom: 8px; /* 레이블과 체크박스 간격 */
+  }
+  
+  .input_check {
+    display: flex; /* 체크박스와 레이블을 나란히 배치 */
+    align-items: center; /* 수직 중앙 정렬 */
+  }
+  
+  .terms_list {
+    list-style: none; /* 리스트 스타일 제거 */
+    font-family: 'Pretendard', sans-serif;
+    font-size: 16px;
+    padding: 0; /* 패딩 제거 */
+  }
+  
+  .terms_box {
+    margin-bottom: 10px; /* 항목 간격 */
+  }
+
+  .tooltip {
+    position: relative; /* 툴팁을 상대적으로 위치시키기 위해 */
+    display: inline-block; /* 인라인 블록으로 표시하여 레이블과 함께 정렬 */
+    margin-left: 10px;
+  }
+  
+  .info-button {
+    background: none; /* 배경 제거 */
+    border: 1px solid #555; /* 테두리 색상 및 두께 */
+    border-radius: 50%; /* 완전 원형으로 만들기 */
+    color: #555; /* 텍스트 색상 */
+    cursor: pointer; /* 커서 변경 */
+    font-size: 12px; /* 글자 크기 */
+    width: 16px; /* 고정된 너비 */
+    height: 16px; /* 고정된 높이 */
+    display: flex; /* Flexbox로 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: center; /* 수평 중앙 정렬 */
+  }
+  
+  
+  .tooltip-text {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 14px;
+    visibility: hidden; /* 기본적으로 숨김 */
+    width: 500px;/* 툴팁 너비 */
+    background-color: #fff; /* 배경색 */
+    color: #555; /* 글자색 */
+    text-align: left; /* 좌측 정렬 */
+    border: 1px solid #e1e1e1;
+    border-radius: 8px; /* 모서리 둥글게 */
+    padding: 20px; /* 안쪽 여백 */
+    position: absolute; /* 절대 위치 설정 */
+    z-index: 1; /* z-index 설정 */
+    bottom: 150%; /* 위쪽에 위치 */
+    left: 50%; /* 중앙 정렬 */
+  }
+  
+  .tooltip:hover .tooltip-text {
+    visibility: visible; /* 마우스를 올렸을 때 보이도록 */
+  }
+  
+  .signup-button-container {
+    text-align: center; /* 버튼 중앙 정렬 */
+    margin-top: 60px;
+    margin-bottom: -20px;
   }
   
   .signup-styled-button {
-    padding: 8px 10px;
-    width: 150px; /*버튼 가로 크기 조절*/
-    background-color: #2c2c2c;
-    color: rgb(255, 255, 255);
-    border: none;
-    /* border-radius: 10px; */
-    cursor: pointer;
-    font-family: 'Noto Sans KR', sans-serif;
-    margin-top: 30px;
-    border-radius: 5px;
+    font-family: 'Pretendard-Regular', sans-serif;
+    background-color: #000000; /* 버튼 배경색 */
+    color: white; /* 버튼 글자색 */
+    border: none; /* 버튼 테두리 없앰 */
+    padding: 16px;
+    width: 100%;
+    border-radius: 6px; /* 버튼 모서리 둥글게 */
+    cursor: pointer; /* 커서 변경 */
+    font-size: 16px; /* 버튼 글자 크기 */
   }
   
-  .title {
-    font-size: 45px;
-    font-family: "Ubuntu", sans-serif;
-    font-weight: 700;
-    color: #2c2c2c;
-    font-style: normal;
-    /* font-weight: 900; */
-    letter-spacing: 3px; 
-    margin-bottom: 3px;
-    margin-top:50px;
+  .popup-overlay {
+    position: fixed; /* 팝업 오버레이 위치 고정 */
+    top: 0; /* 상단에 위치 */
+    left: 0; /* 왼쪽에 위치 */
+    right: 0; /* 오른쪽에 위치 */
+    bottom: 0; /* 하단에 위치 */
+    background: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+    display: flex; /* 플렉스 박스 사용 */
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: center; /* 수평 중앙 정렬 */
   }
   
-  /*약관동의*/
-  .ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .agreement-label {
-    font-family: 'Noto Sans KR', sans-serif;
-    margin-bottom: 5px;
-  }
-
-  .contents {
-    padding: 10px;
-    background-color: #ffffff;
-    border: 1px solid #dadada;
-    border-radius: 5px;
-    margin-top:5px;
-  }
-
-  .terms__list {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  .terms__list .terms__box {
-    margin: 20px 0;
+  .popup {
+    background: white; /* 팝업 배경색 */
+    border-radius: 12px; /* 모서리 둥글게 */
+    padding: 30px; /* 안쪽 여백 */
+    text-align: center; /* 텍스트 중앙 정렬 */
   }
   
-  .contents label {
-    font-weight: 700;
+  .popup-content p {
+    font-family: 'Pretendard-Regular', sans-serif;
+
   }
   
-  .input__check label::after {
-    margin-left: 4px;
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 24px;
-    color: #0086ff;
-    content: "(필수)";
-  }
   
-  .terms__list .terms__content {
-    height: 88px;
-    overflow: auto;
-    margin-top: 8px;
-    padding: 12px;
-    border: 1px solid #dadada;
-    background: #fff;
-    font-size: 12px;
-  }
-
-
-/* signup.css */
-
-.popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 반투명한 검은 배경 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.popup {
-  background-color: white;
-  padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.popup-content {
-  text-align: center;
-  
-}
-
-.popup-content p {
-  margin-bottom: 25px;
-
-}
-
-.popup-content button {
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.popup-content button:hover {
-  background-color: #0056b3;
-}
-
-/* Other styles remain unchanged */
-.hr-signup {
-  transform: rotate(0deg);
-  width: 88px; /* 가로 길이를 조절합니다. */
-  height: 4px; /* 세로 길이를 조절합니다. */
-  border: none; /* 기본 테두리를 제거합니다. */
-   /* 가로 선의 두께와 색상을 설정합니다. */
-  margin-left: auto; /* 좌측 여백을 설정합니다. */
- margin-top: 0px;
- margin-bottom: 40px;
- background-color: rgba(163, 163, 163, 0.6);
- align-self: center;
-}
-
-
-
-
