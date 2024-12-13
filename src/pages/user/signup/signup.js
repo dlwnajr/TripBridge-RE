@@ -110,6 +110,7 @@ const SignUp = () => {
         <div className='signup-message'>회원가입 후 Trip Bridge의 서비스를 이용해보세요.</div>
         <form onSubmit={handleSubmit}>
           <div className="signup-label">이름</div>
+          <div className="signup-inputs">
           <input
             className={`signup-input ${errors.name && 'error'}`}
             placeholder='성함을 입력해주세요.'
@@ -120,7 +121,9 @@ const SignUp = () => {
             required
           />
           {errors.name && <span className="styled-error">{errors.name}</span>}
+          </div>
           <div className="signup-label">닉네임</div>
+          <div className="signup-inputs">
           <input
             className={`signup-input ${errors.nickname && 'error'}`}
             placeholder='닉네임을 입력해주세요.'
@@ -131,7 +134,9 @@ const SignUp = () => {
             required
           />
           {errors.nickname && <span className="styled-error">{errors.nickname}</span>}
+          </div>
           <div className="signup-label">이메일 주소</div>
+          <div className="signup-inputs">
           <input
             className={`signup-input ${errors.email && 'error'}`}
             placeholder='이메일 주소를 입력해주세요.'
@@ -141,8 +146,10 @@ const SignUp = () => {
             onChange={handleChange}
             required
           />
-          {errors.email && <span className="styled-error-email">{errors.email}</span>}
+          {errors.email && <span className="styled-error">{errors.email}</span>}
+          </div>
           <div className="signup-label">비밀번호</div>
+          <div className="signup-inputs">
           <input
             className={`signup-input ${errors.password && 'error'}`}
             placeholder='비밀번호를 입력해주세요.'
@@ -153,7 +160,9 @@ const SignUp = () => {
             required
           />
           {errors.password && <span className="styled-error">{errors.password}</span>}
+          </div>
           <div className="signup-label">비밀번호 확인</div>
+          <div className="signup-inputs">
           <input
             className={`signup-input ${errors.confirmPassword && 'error'}`}
             placeholder='비밀번호를 다시 입력해주세요'
@@ -164,6 +173,7 @@ const SignUp = () => {
             required
           />
           {errors.confirmPassword && <span className="styled-error">{errors.confirmPassword}</span>}
+          </div>
           {/* 약관동의 추가 */}
         <div className="agreement-divider"></div>
           <div className="agreement-label">약관 동의</div>
@@ -195,7 +205,7 @@ const SignUp = () => {
             </ul>
 
           {/* Checkbox error message */}
-          {errors.confirmCheckbox && <span className="styled-error-agree">{errors.confirmCheckbox}</span>}
+          {errors.confirmCheckbox && <span className="styled-error">{errors.confirmCheckbox}</span>}
           <div className="signup-button-container">
             <button className="signup-styled-button" type="submit">
               회원가입

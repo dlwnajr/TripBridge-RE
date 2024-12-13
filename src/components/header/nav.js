@@ -69,7 +69,7 @@ const Nav = ({ isLoggedIn, nickname, onLogout }) => {
           {isLoggedIn && (
             <>
               <li className="nav-item">
-                <div className="styled-user">{nickname}님</div>
+                <div className="styled-user">{nickname} 님</div>
               </li>
               <li className="nav-item">
                 <Link className="styled-link-logout" onClick={onLogout} to="/">LOGOUT</Link>

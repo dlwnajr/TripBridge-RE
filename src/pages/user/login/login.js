@@ -50,6 +50,7 @@ const Login = ({ setIsLoggedIn, setNickname }) => {
         <div className="login-title">로그인</div>
         <div className='login-message'>가입하신 이메일 주소로 로그인하세요.</div>
         <form onSubmit={handleSubmit}>
+        <div className="login-inputs">
           <input
             className={`login-input ${errors.email && 'error'}`}
             placeholder='이메일 주소를 입력해주세요.'
@@ -60,7 +61,8 @@ const Login = ({ setIsLoggedIn, setNickname }) => {
             required
           />
           {errors.email && <span className="styled-error">{errors.email}</span>}
-          
+        </div>
+        <div className="login-inputs">
           <input
             className={`login-input ${errors.password && 'error'}`}
             placeholder='비밀번호를 입력해주세요.'
@@ -72,7 +74,7 @@ const Login = ({ setIsLoggedIn, setNickname }) => {
           />
           {errors.password && <span className="styled-error">{errors.password}</span>}
           {errorMessage && <span className="styled-error">{errorMessage}</span>}
-
+          </div>
           <div className="login-button-container">
             <button className="login-button" type="submit">로그인</button>
           </div>
